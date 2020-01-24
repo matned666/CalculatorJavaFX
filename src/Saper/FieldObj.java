@@ -1,6 +1,5 @@
 package Saper;
 
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Font;
@@ -30,16 +29,13 @@ public class FieldObj {
     private int columnSpan;
     private int fontSize;
     private Font font;
-    private String text;
-    private ActionEvent action;
     private double opacity;
 
 
 
     public FieldObj(boolean isBomb, boolean isChecked, boolean isOpen, int minHeight,
                     int prefHeight, int maxHeight, int minWidth, int prefWidth, int maxWidth,
-                    int columnSpan, int fontSize, String text, double wrappingWidth,
-                    String textFieldText, double strokeWidth)
+                    int columnSpan, int fontSize, double wrappingWidth, double strokeWidth)
     {
         this.isBomb = isBomb;
         this.isChecked = isChecked;
@@ -53,7 +49,6 @@ public class FieldObj {
         this.maxWidth = maxWidth;
         this.columnSpan = columnSpan;
         this.font = new Font("Arial Bold", fontSize);
-        this.text = text;
         this.opacity = 1;
         this.textField = new Text();
         this.strokeWidth = strokeWidth;
@@ -76,21 +71,20 @@ public class FieldObj {
         button.setPrefWidth(this.prefWidth);
         button.setMaxWidth(this.maxWidth);
         button.setFont(new Font("Arial Bold", this.fontSize));
-        button.setText(this.text);
+        button.setText("");
     }
 
-    public void setOpacity(int opacity) {
-        this.opacity = opacity;
+    public void setAllSizes(int i){
+        button.setMinHeight(i);
+        button.setPrefHeight(i);
+        button.setMaxHeight(i);
+        button.setMinWidth(i);
+        button.setPrefWidth(i);
+        button.setMaxWidth(i);
     }
 
-    public void setAllSizesToZero(){
-        button.setOpacity(0);
-        button.setMinHeight(0);
-        button.setPrefHeight(0);
-        button.setMaxHeight(0);
-        button.setMinWidth(0);
-        button.setPrefWidth(0);
-        button.setMaxWidth(0);
+    public void setBomb(boolean bomb) {
+        isBomb = bomb;
     }
 
     public String toString(){
@@ -112,10 +106,6 @@ public class FieldObj {
 
     public Button getButton() {
         return button;
-    }
-
-    public void setButton(Button button) {
-        this.button = button;
     }
 
     public Text getTextField() {
@@ -152,69 +142,5 @@ public class FieldObj {
 
     public int getNumberOfBombsInSurround() {
         return numberOfBombsInSurround;
-    }
-
-    public boolean isBlownBomb() {
-        return isBlownBomb;
-    }
-
-    public double getWrappingWidth() {
-        return wrappingWidth;
-    }
-
-    public String getTextFieldText() {
-        return textFieldText;
-    }
-
-    public double getStrokeWidth() {
-        return strokeWidth;
-    }
-
-    public int getMinHeight() {
-        return minHeight;
-    }
-
-    public int getPrefHeight() {
-        return prefHeight;
-    }
-
-    public int getMaxHeight() {
-        return maxHeight;
-    }
-
-    public int getMinWidth() {
-        return minWidth;
-    }
-
-    public int getPrefWidth() {
-        return prefWidth;
-    }
-
-    public int getMaxWidth() {
-        return maxWidth;
-    }
-
-    public int getColumnSpan() {
-        return columnSpan;
-    }
-
-    public int getFontSize() {
-        return fontSize;
-    }
-
-    public Font getFont() {
-        return font;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public ActionEvent getAction() {
-        return action;
-    }
-
-    public double getOpacity() {
-        return opacity;
     }
 }
