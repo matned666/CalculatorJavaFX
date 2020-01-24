@@ -1,12 +1,18 @@
 package Saper;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 public class SaperController {
 
     public Text gameMessage;
+    public Button imgChange;
+    public Button restartButton;
+    public GridPane lowerGrindPane;
     private Matrix matrix;
 
     @FXML
@@ -23,6 +29,7 @@ public class SaperController {
                 for (int j = 0; j < 17; j++) {
                     gridPlaneGame.add(matrix.getMatrix()[i][j].getTextField(), i + 2, j + 2);
                     gridPlaneGame.add(matrix.getMatrix()[i][j].getButton(), i + 2, j + 2);
+
                 }
             }
         }
