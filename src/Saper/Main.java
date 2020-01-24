@@ -16,11 +16,11 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("\\FXML\\Saper.fxml"));
-        GridPane gridPane = loader.load();
+        StackPane stackPane = loader.load();
 
         SaperController controller = loader.getController();
 
-        Scene scene = new Scene(gridPane);
+        Scene scene = new Scene(stackPane);
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("SUPER SAPER FX");

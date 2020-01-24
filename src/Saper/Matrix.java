@@ -1,33 +1,94 @@
 package Saper;
 
-public class Matrix {
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.event.Event;
 
-    private Field[][] matrix;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+
+public class Matrix<E extends Event> {
+
+    private FieldObj[][] matrix;
     private int numberOfBombs;
     private int numberOfFields;
     private boolean[] bombFields;
     private int xFirst;
     private int yFirst;
+    private MouseEvent mouseEvent;
+
+//    public Matrix(int n) {
+//        this.event = event;
+//        this.xFirst = 10;
+//        this.yFirst = 10;
+//        this.numberOfBombs = 20;
+//        this.numberOfFields = n * n;
+//        this.matrix = new GrindObject[n][];
+//        for(int i = 0; i < n ; i++){
+//            this.matrix = new GrindObject[i][n-1];
+//        }
+//        bombFieldsArr();
+//        generateMatrix();
+//        setNeighours();
+//    }
+
 
     public Matrix(int xFirst, int yFirst, int n, int numberOfBombs) throws CustomException {
         this.xFirst = xFirst;
         this.yFirst = yFirst;
         this.numberOfBombs = numberOfBombs;
         this.numberOfFields = n * n;
-            this.matrix = new Field[n][];
+            this.matrix = new FieldObj[n][];
             for(int i = 0; i < n ; i++){
-                this.matrix = new Field[i][n-1];
+                this.matrix = new FieldObj[i][n-1];
             }
             bombFieldsArr();
             generateMatrix();
             setNeighours();
+            addEventHandlerToAllButtons();
+    }
+
+    private void handle (int x, int y){
+        EventHandler leftClick = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("x:"+x+",y:"+y);
+                System.out.println(actionEvent);
+                openField(x,y);
+                System.out.println("isBomb:"+matrix[x][y].isBomb());
+                System.out.println("isOpen:"+matrix[x][y].isOpen());
+                System.out.println("NumberOfBombsInSurround:"+matrix[x][y].getNumberOfBombsInSurround());
+
+            }
+        };
+
+        EventHandler<MouseEvent>  rightClick = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                matrix[x][y].setChecked(true);
+                matrix[x][y].setText();
+            }
+        };
+
+        matrix[x][y].getButton().addEventHandler(ActionEvent.ACTION, leftClick);
+
+    }
+
+    private void addEventHandlerToAllButtons(){
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                matrix[i][j].getTextField().setText(matrix[i][j].toString());
+                handle(i,j);
+            }
+        }
     }
 
     public int getNumberOfClosedFields(){
         int temp = 0;
         for(int i = 0 ; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                if(!matrix[i][j].isOpen) temp ++;
+                if(!matrix[i][j].isOpen()) temp ++;
             }
         }
         return temp;
@@ -49,6 +110,8 @@ public class Matrix {
         return this.bombFields;
     }
 
+
+
     public int getFieldId (int x , int y){
         int iDCounter = 0;
         for(int i = 0 ; i < matrix.length; i++) {
@@ -61,7 +124,7 @@ public class Matrix {
 
 
 
-    public Field[][] getMatrix() {
+    public FieldObj[][] getMatrix() {
         return matrix;
     }
 
@@ -107,54 +170,56 @@ public class Matrix {
     }
 
     public void openField(int x, int y){
-        if(x>=0 && x < matrix.length && y>=0 && y < matrix[x].length && !matrix[x][y].isBomb() && !matrix[x][y].isOpen){
+        if(x>=0 && x < matrix.length && y>=0 && y < matrix[x].length && !matrix[x][y].isBomb() && !matrix[x][y].isOpen()){
+            matrix[x][y].setAllSizesToZero();
             matrix[x][y].setOpen(true);
-                if (x > 0 && matrix[x][y].numberOfBombsInSurround == 0 )openField(x-1,y);
-                if (x > 0 && y > 0 && matrix[x][y].numberOfBombsInSurround == 0 )openField(x-1,y-1);
-                if (x > 0 && y < matrix[x].length && matrix[x][y].numberOfBombsInSurround == 0 )openField(x-1,y+1);
-                if (y > 0 && matrix[x][y].numberOfBombsInSurround == 0 )openField(x,y-1);
-                if (y < matrix[x].length && matrix[x][y].numberOfBombsInSurround == 0 )openField(x, y+1);
-                if (x < matrix.length && y > 0 && matrix[x][y].numberOfBombsInSurround == 0 )openField(x+1,y-1);
-                if (x < matrix.length && matrix[x][y].numberOfBombsInSurround == 0 )openField(x+1,y);
-                if (x < matrix.length && y < matrix[x].length && matrix[x][y].numberOfBombsInSurround == 0 )openField(x+1,y+1);
+                if (x > 0 && matrix[x][y].getNumberOfBombsInSurround() == 0 )openField(x-1,y);
+                if (x > 0 && y > 0 && matrix[x][y].getNumberOfBombsInSurround() == 0 )openField(x-1,y-1);
+                if (x > 0 && y < matrix[x].length && matrix[x][y].getNumberOfBombsInSurround() == 0 )openField(x-1,y+1);
+                if (y > 0 && matrix[x][y].getNumberOfBombsInSurround() == 0 )openField(x,y-1);
+                if (y < matrix[x].length && matrix[x][y].getNumberOfBombsInSurround() == 0 )openField(x, y+1);
+                if (x < matrix.length && y > 0 && matrix[x][y].getNumberOfBombsInSurround() == 0 )openField(x+1,y-1);
+                if (x < matrix.length && matrix[x][y].getNumberOfBombsInSurround() == 0 )openField(x+1,y);
+                if (x < matrix.length && y < matrix[x].length && matrix[x][y].getNumberOfBombsInSurround() == 0 )openField(x+1,y+1);
         }
     }
 
     public void openAll(){
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                matrix[i][j].isOpen=true;
+                matrix[i][j].setOpen(true);
             }
         }
     }
 
     private void generateMatrix(){
         int counter = 0;
+
         for(int i = 0 ; i < matrix.length; i++){
             for(int j = 0; j < matrix[i].length; j++){
                 if(i==0) {
                     if(j == 0){
-                        matrix[i][j] = new Field(this.bombFields[counter],false,false);
+                        matrix[i][j] = new FieldObj(this.bombFields[counter],false,false,30,30,30,30,30,30,1,10,"", 30,toString(),0);
                     }else if(j == matrix[i].length-1){
-                        matrix[i][j] = new Field(this.bombFields[counter],false,false);
+                        matrix[i][j] = new FieldObj(this.bombFields[counter],false,false,30,30,30,30,30,30,1,10,"",30,toString(),0);
                     }else{
-                        matrix[i][j] = new Field(this.bombFields[counter],false,false);
+                        matrix[i][j] = new FieldObj(this.bombFields[counter],false,false,30,30,30,30,30,30,1,10,"",30,toString(),0);
                     }
                 }else if(i>0 && i<matrix.length-1) {
                     if(j == 0){
-                        matrix[i][j] = new Field(this.bombFields[counter],false,false);
+                        matrix[i][j] = new FieldObj(this.bombFields[counter],false,false,30,30,30,30,30,30,1,10,"",30,toString(),0);
                     }else if(j == matrix[i].length-1){
-                        matrix[i][j] = new Field(this.bombFields[counter],false,false);
+                        matrix[i][j] = new FieldObj(this.bombFields[counter],false,false,30,30,30,30,30,30,1,10,"",30,toString(),0);
                     }else{
-                        matrix[i][j] = new Field(this.bombFields[counter],false,false);
+                        matrix[i][j] = new FieldObj(this.bombFields[counter],false,false,30,30,30,30,30,30,1,10,"",30,toString(),0);
                     }
                 }else if(i == matrix.length-1){
                     if(j == 0){
-                        matrix[i][j] = new Field(this.bombFields[counter],false,false);
+                        matrix[i][j] = new FieldObj(this.bombFields[counter],false,false,30,30,30,30,30,30,1,10,"",30,toString(),0);
                     }else if(j == matrix[i].length-1){
-                        matrix[i][j] = new Field(this.bombFields[counter],false,false);
+                        matrix[i][j] = new FieldObj(this.bombFields[counter],false,false,30,30,30,30,30,30,1,10,"",30,toString(),0);
                     }else{
-                        matrix[i][j] = new Field(this.bombFields[counter],false,false);
+                        matrix[i][j] = new FieldObj(this.bombFields[counter],false,false,30,30,30,30,30,30,1,10,"",30,toString(),0);
                     }
                 }
                 counter ++;
