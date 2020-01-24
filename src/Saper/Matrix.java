@@ -2,45 +2,22 @@ package Saper;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.Event;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
-public class Matrix<E extends Event> {
+public class Matrix{
 
-    Text gameMessage;
+    private Text gameMessage;
     private FieldObj[][] matrix;
     private int numberOfBombs;
     private int numberOfFields;
     private boolean[] bombFields;
     private int xFirst;
     private int yFirst;
-    private MouseEvent mouseEvent;
 
-    private GridPane gridPlaneGame;
-
-//    public Matrix(int n) {
-//        this.event = event;
-//        this.xFirst = 10;
-//        this.yFirst = 10;
-//        this.numberOfBombs = 20;
-//        this.numberOfFields = n * n;
-//        this.matrix = new GrindObject[n][];
-//        for(int i = 0; i < n ; i++){
-//            this.matrix = new GrindObject[i][n-1];
-//        }
-//        bombFieldsArr();
-//        generateMatrix();
-//        setNeighours();
-//    }
-
-
-    public Matrix(int xFirst, int yFirst, int n, int numberOfBombs, GridPane gridPlaneGame, Text gameMessage) throws CustomException {
+    Matrix(int xFirst, int yFirst, int n, int numberOfBombs, Text gameMessage){
         this.xFirst = xFirst;
         this.yFirst = yFirst;
         this.gameMessage = gameMessage;
-        this.gridPlaneGame = gridPlaneGame;
         this.numberOfBombs = numberOfBombs;
         this.numberOfFields = n * n;
         this.matrix = new FieldObj[n][];
@@ -57,14 +34,6 @@ public class Matrix<E extends Event> {
             @Override
             public void handle(ActionEvent actionEvent) {
                 openField(x, y);
-            }
-        };
-
-        EventHandler<MouseEvent> rightClick = new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                matrix[x][y].setChecked(true);
-                matrix[x][y].setText();
             }
         };
         matrix[x][y].getButton().addEventHandler(ActionEvent.ACTION, leftClick);
@@ -215,17 +184,14 @@ public class Matrix<E extends Event> {
 
     public void generateMatrix() {
         int counter = 0;
-
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-
                 matrix[i][j] = new FieldObj(this.bombFields[counter], false, false, 30, 30, 30, 30, 30, 30, 1, 10, 30, 0);
                 String value = "ButtonX" + i + "Y" + j;
                 matrix[i][j].getButton().setId(value);
                 counter++;
             }
         }
-
         setNeighbors();
         addEventHandlerToAllButtons();
     }

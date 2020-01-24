@@ -8,10 +8,6 @@ public class SaperController {
 
     public Text gameMessage;
     private Matrix matrix;
-    private boolean isFirst;
-    private FieldObj[][] firstArray;
-    private int numberOfFields;
-    private int numberOfBombs;
 
     @FXML
     GridPane gridPlaneGame;
@@ -19,14 +15,10 @@ public class SaperController {
     public SaperController() {
     }
 
-    public void initialize() throws CustomException {
-        deal1();
-    }
-
-    private void deal1() throws CustomException{
+    public void initialize() {
         gameMessage.setText("Good luck...");
         if (this.matrix == null) {
-            this.matrix = new Matrix(10, 10, 18, 40, gridPlaneGame, gameMessage);
+            this.matrix = new Matrix(10, 10, 18, 40, gameMessage);
             for (int i = 0; i < 17; i++) {
                 for (int j = 0; j < 17; j++) {
                     gridPlaneGame.add(matrix.getMatrix()[i][j].getTextField(), i + 2, j + 2);
@@ -41,7 +33,7 @@ public class SaperController {
     }
 
     @FXML
-    public void startGame() throws CustomException {
+    public void startGame() {
       matrix.generateNextMatrix();
       gameMessage.setText("Good luck...");
 
