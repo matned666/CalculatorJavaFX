@@ -66,40 +66,6 @@
                </font>
             </Button>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Made by Mateusz Niedbał" wrappingWidth="154.93667030334473" GridPane.columnIndex="15" GridPane.columnSpan="5" GridPane.rowIndex="19" />
-            <Text fx:id="text_x0y117aa" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y1171" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="12" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y1172" strokeType="OUTSIDE" strokeWidth="0.0" text="9" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="11" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y1173" strokeType="OUTSIDE" strokeWidth="0.0" text="8" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="10" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y1174" strokeType="OUTSIDE" strokeWidth="0.0" text="7" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="9" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y1175" strokeType="OUTSIDE" strokeWidth="0.0" text="6" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="8" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y1176" strokeType="OUTSIDE" strokeWidth="0.0" text="5" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y1177" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y1178" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y1179" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y11710" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y11711" strokeType="OUTSIDE" strokeWidth="0.0" text="16" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="18" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y11712" strokeType="OUTSIDE" strokeWidth="0.0" text="15" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="17" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y11713" strokeType="OUTSIDE" strokeWidth="0.0" text="14" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="16" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y11714" strokeType="OUTSIDE" strokeWidth="0.0" text="13" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="15" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y11715" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="14" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y11716" strokeType="OUTSIDE" strokeWidth="0.0" text="11" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="13" GridPane.rowIndex="1" />
-            <Text fx:id="text_x0y11717" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Text fx:id="text_x0y11718" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-            <Text fx:id="text_x0y11721" strokeType="OUTSIDE" strokeWidth="0.0" text="9" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-            <Text fx:id="text_x0y11731" strokeType="OUTSIDE" strokeWidth="0.0" text="8" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <Text fx:id="text_x0y11741" strokeType="OUTSIDE" strokeWidth="0.0" text="7" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <Text fx:id="text_x0y11751" strokeType="OUTSIDE" strokeWidth="0.0" text="6" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <Text fx:id="text_x0y11761" strokeType="OUTSIDE" strokeWidth="0.0" text="5" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Text fx:id="text_x0y11771" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Text fx:id="text_x0y11781" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Text fx:id="text_x0y11791" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Text fx:id="text_x0y117101" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Text fx:id="text_x0y117111" strokeType="OUTSIDE" strokeWidth="0.0" text="16" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="18" />
-            <Text fx:id="text_x0y117121" strokeType="OUTSIDE" strokeWidth="0.0" text="15" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="17" />
-            <Text fx:id="text_x0y117131" strokeType="OUTSIDE" strokeWidth="0.0" text="14" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="16" />
-            <Text fx:id="text_x0y117141" strokeType="OUTSIDE" strokeWidth="0.0" text="13" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="15" />
-            <Text fx:id="text_x0y117151" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-            <Text fx:id="text_x0y117161" strokeType="OUTSIDE" strokeWidth="0.0" text="11" textAlignment="CENTER" wrappingWidth="32.201539039611816" GridPane.columnIndex="1" GridPane.rowIndex="13" />
             <Text fx:id="gameMessage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="154.93667030334473" GridPane.columnIndex="1" GridPane.rowIndex="19" />
          </children>
       </GridPane>

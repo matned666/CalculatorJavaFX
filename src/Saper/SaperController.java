@@ -36,7 +36,5 @@ public class SaperController {
     public void startGame() {
       matrix.generateNextMatrix();
       gameMessage.setText("Good luck...");
-
-
     }
 }

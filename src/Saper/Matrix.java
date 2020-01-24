@@ -2,6 +2,8 @@ package Saper;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 public class Matrix{
@@ -36,13 +38,32 @@ public class Matrix{
                 openField(x, y);
             }
         };
+
+        EventHandler rightClick = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getButton().equals(MouseButton.SECONDARY)) {
+                    if (!matrix[x][y].isChecked() && !matrix[x][y].isQuestionMark()) {
+                        matrix[x][y].setChecked(true);
+                        matrix[x][y].getButton().setText(matrix[x][y].buttonToString());
+                    } else if (matrix[x][y].isChecked() && !matrix[x][y].isQuestionMark()) {
+                        matrix[x][y].setQuestionMark(true);
+                        matrix[x][y].getButton().setText(matrix[x][y].buttonToString());
+                    } else if (matrix[x][y].isChecked() && matrix[x][y].isQuestionMark()) {
+                        matrix[x][y].setChecked(false);
+                        matrix[x][y].setQuestionMark(false);
+                        matrix[x][y].getButton().setText(matrix[x][y].buttonToString());
+                    }
+                }
+            }
+        };
         matrix[x][y].getButton().addEventHandler(ActionEvent.ACTION, leftClick);
+        matrix[x][y].getButton().addEventHandler(MouseEvent.MOUSE_CLICKED, rightClick);
     }
 
     private void addEventHandlerToAllButtons() {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                matrix[i][j].getTextField().setText(matrix[i][j].toString());
                 handle(i, j);
             }
         }
@@ -57,6 +78,7 @@ public class Matrix{
         }
         return temp;
     }
+
 
     private boolean[] bombFieldsArr() {
         this.bombFields = new boolean[numberOfFields];
@@ -182,11 +204,19 @@ public class Matrix{
         }
     }
 
+    private void setAllText(){
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                matrix[i][j].getTextField().setText(matrix[i][j].toString());
+            }
+        }
+    }
+
     public void generateMatrix() {
         int counter = 0;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                matrix[i][j] = new FieldObj(this.bombFields[counter], false, false, 30, 30, 30, 30, 30, 30, 1, 10, 30, 0);
+                matrix[i][j] = new FieldObj(this.bombFields[counter], false, false);
                 String value = "ButtonX" + i + "Y" + j;
                 matrix[i][j].getButton().setId(value);
                 counter++;
@@ -194,6 +224,7 @@ public class Matrix{
         }
         setNeighbors();
         addEventHandlerToAllButtons();
+        setAllText();
     }
 
     public void generateNextMatrix() {
@@ -204,12 +235,14 @@ public class Matrix{
             for (int j = 0; j < matrix[i].length; j++) {
                 matrix[i][j].setBomb(this.bombFields[counter]);
                 matrix[i][j].setChecked(false);
+                matrix[i][j].setQuestionMark(false);
                 matrix[i][j].setBlownBomb(false);
                 matrix[i][j].getTextField().setText(matrix[i][j].toString());
+                matrix[i][j].getButton().setText(matrix[i][j].buttonToString());
                 counter++;
             }
         }
         setNeighbors();
-        addEventHandlerToAllButtons();
+        setAllText();
     }
 }

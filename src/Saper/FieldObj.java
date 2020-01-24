@@ -11,66 +11,35 @@ public class FieldObj {
     private boolean isBomb;
     private boolean isChecked;
     private boolean isOpen;
+    private boolean isQuestionMark;
     private int numberOfBombsInSurround;
     private boolean isBlownBomb;
-
     private Text textField;
-    private double wrappingWidth;
-    private String textFieldText;
-    private double strokeWidth;
-
     private Button button;
-    private int minHeight;
-    private int prefHeight;
-    private int maxHeight;
-    private int minWidth;
-    private int prefWidth;
-    private int maxWidth;
-    private int columnSpan;
-    private int fontSize;
-    private Font font;
-    private double opacity;
 
-
-
-    public FieldObj(boolean isBomb, boolean isChecked, boolean isOpen, int minHeight,
-                    int prefHeight, int maxHeight, int minWidth, int prefWidth, int maxWidth,
-                    int columnSpan, int fontSize, double wrappingWidth, double strokeWidth)
-    {
+    public FieldObj(boolean isBomb, boolean isChecked, boolean isOpen) {
         this.isBomb = isBomb;
         this.isChecked = isChecked;
         this.isOpen = isOpen;
-        this.button = new Button();
-        this.minHeight = minHeight;
-        this.prefHeight = prefHeight;
-        this.maxHeight = maxHeight;
-        this.minWidth = minWidth;
-        this.prefWidth = prefWidth;
-        this.maxWidth = maxWidth;
-        this.columnSpan = columnSpan;
-        this.font = new Font("Arial Bold", fontSize);
-        this.opacity = 1;
         this.textField = new Text();
-        this.strokeWidth = strokeWidth;
-        this.wrappingWidth = wrappingWidth;
-        this.textFieldText = toString();
-        this.fontSize = fontSize;
+        this.button = new Button();
+        this.isQuestionMark = false;
 
-        textField.setText(this.textFieldText);
-        textField.setWrappingWidth(this.wrappingWidth);
+        textField.setText(toString());
+        textField.setWrappingWidth(30);
         textField.setTextAlignment(TextAlignment.CENTER);
-        textField.setStrokeWidth(this.strokeWidth);
+        textField.setStrokeWidth(0);
         textField.setStrokeType(StrokeType.OUTSIDE);
-        textField.setFont(new Font("Arial Bold", this.fontSize));
+        textField.setFont(new Font("Arial Bold", 10));
 
-        button.setOpacity(this.opacity);
-        button.setMinHeight(this.minHeight);
-        button.setPrefHeight(this.prefHeight);
-        button.setMaxHeight(this.maxHeight);
-        button.setMinWidth(this.minWidth);
-        button.setPrefWidth(this.prefWidth);
-        button.setMaxWidth(this.maxWidth);
-        button.setFont(new Font("Arial Bold", this.fontSize));
+        button.setOpacity(1);
+        button.setMinHeight(30);
+        button.setPrefHeight(30);
+        button.setMaxHeight(30);
+        button.setMinWidth(30);
+        button.setPrefWidth(30);
+        button.setMaxWidth(30);
+        button.setFont(new Font("Arial Bold", 10));
         button.setText("");
     }
 
@@ -88,20 +57,19 @@ public class FieldObj {
     }
 
     public String toString(){
-
             if(this.isBomb && !this.isChecked && !this.isBlownBomb) return "\u26AB";
-            else if(this.isBomb && this.isChecked && !this.isBlownBomb) return "\u26AA";
             else if(this.isBomb && !this.isChecked && this.isBlownBomb) return "@";
             else{
                 if(numberOfBombsInSurround==0) return ".";
                 else
                     return String.valueOf(getNumberOfBombsInSurround());
             }
-
     }
 
-    public void setText() {
-        toString();
+    public String buttonToString(){
+        if(isChecked && !isQuestionMark) return "X";
+        else if((isChecked && isQuestionMark) || (isChecked && isQuestionMark) ) return "?";
+        else return "";
     }
 
     public Button getButton() {
@@ -142,5 +110,13 @@ public class FieldObj {
 
     public int getNumberOfBombsInSurround() {
         return numberOfBombsInSurround;
+    }
+
+    public boolean isQuestionMark() {
+        return isQuestionMark;
+    }
+
+    public void setQuestionMark(boolean questionMark) {
+        isQuestionMark = questionMark;
     }
 }
