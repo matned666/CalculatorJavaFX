@@ -95,9 +95,9 @@ public class FieldObj {
 
     public String toString(){
 
-            if(this.isBomb && !this.isChecked && !this.isBlownBomb) return "\u231A";
-            else if(this.isBomb && this.isChecked && !this.isBlownBomb) return "\u25CB";
-            else if(this.isBomb && !this.isChecked && this.isBlownBomb) return "\u2A33";
+            if(this.isBomb && !this.isChecked && !this.isBlownBomb) return "\u26AB";
+            else if(this.isBomb && this.isChecked && !this.isBlownBomb) return "\u26AA";
+            else if(this.isBomb && !this.isChecked && this.isBlownBomb) return "@";
             else{
                 if(numberOfBombsInSurround==0) return ".";
                 else
